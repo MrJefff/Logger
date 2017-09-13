@@ -4,7 +4,7 @@ using Oxide.Core.Libraries.Covalence;
 
 namespace Oxide.Plugins
 {
-    [Info("Logger", "Wulf/lukespragg", "2.1.0", ResourceId = 670)]
+    [Info("Logger", "Wulf/lukespragg", "2.1.1", ResourceId = 670)]
     [Description("Configurable logging of chat, commands, connections, and more")]
     public class Logger : CovalencePlugin
     {
@@ -109,7 +109,7 @@ namespace Oxide.Plugins
             lang.RegisterMessages(new Dictionary<string, string>
             {
                 ["ItemCrafted"] = "{0} ({1}) crafted {2} {3}",
-                ["ItemDropped"] = "{0} ({1} dropped {2} {3}",
+                ["ItemDropped"] = "{0} ({1}) dropped {2} {3}",
                 ["PlayerCommand"] = "{0} ({1}) ran command: {2} {3}",
                 ["PlayerConnected"] = "{0} ({1}) connected from {2}",
                 ["PlayerDisconnected"] = "{0} ({1}) disconnected",
@@ -120,7 +120,7 @@ namespace Oxide.Plugins
             lang.RegisterMessages(new Dictionary<string, string>
             {
                 ["ItemCrafted"] = "{0} ({1}) ouvré {2} {3}",
-                ["ItemDropped"] = "{0} ({1} a chuté {2} {3}",
+                ["ItemDropped"] = "{0} ({1}) a chuté {2} {3}",
                 ["PlayerCommand"] = "{0} ({1}) a couru la commande : {3} {2}",
                 ["PlayerConnected"] = "{0} ({1}) reliant {2}",
                 ["PlayerDisconnected"] = "{0} ({1}) déconnecté",
@@ -131,7 +131,7 @@ namespace Oxide.Plugins
             lang.RegisterMessages(new Dictionary<string, string>
             {
                 ["ItemCrafted"] = "{0} ({1}) in Handarbeit {2} {3}",
-                ["ItemDropped"] = "{0} ({1} fallen gelassen {2} {3}",
+                ["ItemDropped"] = "{0} ({1}) fallen gelassen {2} {3}",
                 ["PlayerCommand"] = "{0} ({1}) lief Befehl: {2} {3}",
                 ["PlayerConnected"] = "{0} ({1}) {2} verbunden",
                 ["PlayerDisconnected"] = "{0} ({1}) nicht getrennt",
@@ -142,7 +142,7 @@ namespace Oxide.Plugins
             lang.RegisterMessages(new Dictionary<string, string>
             {
                 ["ItemCrafted"] = "{0} ({1}) созданный {2} {3}",
-                ["ItemDropped"] = "{0} ({1} упал {2} {3}",
+                ["ItemDropped"] = "{0} ({1}) упал {2} {3}",
                 ["PlayerCommand"] = "{0} ({1}) прописал команду: {2} {3}",
                 ["PlayerConnected"] = "{0} ({1}) подключился с IP: {2}",
                 ["PlayerDisconnected"] = "{0} ({1}) отключился",
@@ -153,7 +153,7 @@ namespace Oxide.Plugins
             lang.RegisterMessages(new Dictionary<string, string>
             {
                 ["ItemCrafted"] = "{0} ({1}) hecho a mano {2} {3}",
-                ["ItemDropped"] = "{0} ({1} cayó {2} {3}",
+                ["ItemDropped"] = "{0} ({1}) cayó {2} {3}",
                 ["PlayerCommand"] = "{0} ({1}) funcionó la consola: {2} {3}",
                 ["PlayerConnected"] = "{0} ({1}) conectado de {2}",
                 ["PlayerDisconnected"] = "{0} ({1}) desconectado",
