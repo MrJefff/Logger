@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using Oxide.Core.Libraries.Covalence;
+using System.Collections.Generic;
 
 namespace Oxide.Plugins
 {
@@ -82,7 +82,7 @@ namespace Oxide.Plugins
 
         protected override void SaveConfig() => Config.WriteObject(config);
 
-        #endregion
+        #endregion Configuration
 
         #region Initialization
 
@@ -99,7 +99,7 @@ namespace Oxide.Plugins
 #endif
         }
 
-        #endregion
+        #endregion Initialization
 
         #region Localization
 
@@ -109,7 +109,7 @@ namespace Oxide.Plugins
             lang.RegisterMessages(new Dictionary<string, string>
             {
                 ["ItemCrafted"] = "{0} ({1}) crafted {2} {3}",
-                ["ItemDropped"] = "{0} ({1}) dropped {2} {3}",
+                ["ItemDropped"] = "{0} ({1} dropped {2} {3}",
                 ["PlayerCommand"] = "{0} ({1}) ran command: {2} {3}",
                 ["PlayerConnected"] = "{0} ({1}) connected from {2}",
                 ["PlayerDisconnected"] = "{0} ({1}) disconnected",
@@ -120,7 +120,7 @@ namespace Oxide.Plugins
             lang.RegisterMessages(new Dictionary<string, string>
             {
                 ["ItemCrafted"] = "{0} ({1}) ouvré {2} {3}",
-                ["ItemDropped"] = "{0} ({1}) a chuté {2} {3}",
+                ["ItemDropped"] = "{0} ({1} a chuté {2} {3}",
                 ["PlayerCommand"] = "{0} ({1}) a couru la commande : {3} {2}",
                 ["PlayerConnected"] = "{0} ({1}) reliant {2}",
                 ["PlayerDisconnected"] = "{0} ({1}) déconnecté",
@@ -131,7 +131,7 @@ namespace Oxide.Plugins
             lang.RegisterMessages(new Dictionary<string, string>
             {
                 ["ItemCrafted"] = "{0} ({1}) in Handarbeit {2} {3}",
-                ["ItemDropped"] = "{0} ({1}) fallen gelassen {2} {3}",
+                ["ItemDropped"] = "{0} ({1} fallen gelassen {2} {3}",
                 ["PlayerCommand"] = "{0} ({1}) lief Befehl: {2} {3}",
                 ["PlayerConnected"] = "{0} ({1}) {2} verbunden",
                 ["PlayerDisconnected"] = "{0} ({1}) nicht getrennt",
@@ -142,7 +142,7 @@ namespace Oxide.Plugins
             lang.RegisterMessages(new Dictionary<string, string>
             {
                 ["ItemCrafted"] = "{0} ({1}) созданный {2} {3}",
-                ["ItemDropped"] = "{0} ({1}) упал {2} {3}",
+                ["ItemDropped"] = "{0} ({1} упал {2} {3}",
                 ["PlayerCommand"] = "{0} ({1}) прописал команду: {2} {3}",
                 ["PlayerConnected"] = "{0} ({1}) подключился с IP: {2}",
                 ["PlayerDisconnected"] = "{0} ({1}) отключился",
@@ -153,7 +153,7 @@ namespace Oxide.Plugins
             lang.RegisterMessages(new Dictionary<string, string>
             {
                 ["ItemCrafted"] = "{0} ({1}) hecho a mano {2} {3}",
-                ["ItemDropped"] = "{0} ({1}) cayó {2} {3}",
+                ["ItemDropped"] = "{0} ({1} cayó {2} {3}",
                 ["PlayerCommand"] = "{0} ({1}) funcionó la consola: {2} {3}",
                 ["PlayerConnected"] = "{0} ({1}) conectado de {2}",
                 ["PlayerDisconnected"] = "{0} ({1}) desconectado",
@@ -161,7 +161,7 @@ namespace Oxide.Plugins
             }, this, "es");
         }
 
-        #endregion
+        #endregion Localization
 
         #region Logging
 
@@ -176,7 +176,7 @@ namespace Oxide.Plugins
 #if RUST
         private void OnItemAction(Item item, string action)
         {
-            var player = item.parent.playerOwner;
+            var player = item.parent?.playerOwner;
             if (action.ToLower() != "drop" || player == null) return;
 
             Log("itemdrop", Lang("ItemDropped", null, player.displayName, player.UserIDString, item.amount, item.info.displayName.english));
@@ -210,18 +210,18 @@ namespace Oxide.Plugins
         }
 #endif
 
-        #endregion
+        #endregion Logging
 
         #region Helpers
 
         private string Lang(string key, string id = null, params object[] args) => string.Format(lang.GetMessage(key, this, id), args);
 
-        private void Log(string filename, string text)
+        private void Log(string filename, string key, params object[] args)
         {
-            LogToFile(filename, text, this);
-            if (config.LogToConsole) Puts(text);
+            if (config.LogToConsole) Puts($"[{System.DateTime.Now}] {Lang(key, null, args)}");
+            LogToFile(filename, Lang(key, null, args), this);
         }
 
-        #endregion
+        #endregion Helpers
     }
 }
