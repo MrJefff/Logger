@@ -94,7 +94,7 @@ namespace Oxide.Plugins
             if (!config.LogDisconnections) Unsubscribe("OnUserDisconnected");
             if (!config.LogRespawns) Unsubscribe("OnUserRespawned");
 #if RUST
-            if (!config.LogCrafting) Unsubscribe("OnItemCraft");
+            if (!config.LogCrafting) Unsubscribe("OnItemCraftFinished");
             if (!config.LogItemDrops) Unsubscribe("OnItemAction");
 #endif
         }
