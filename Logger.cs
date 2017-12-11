@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Oxide.Plugins
 {
-    [Info("Logger", "Wulf/lukespragg", "2.1.1", ResourceId = 670)]
+    [Info("Logger", "Wulf/lukespragg", "2.1.2", ResourceId = 670)]
     [Description("Configurable logging of chat, commands, connections, and more")]
     public class Logger : CovalencePlugin
     {
